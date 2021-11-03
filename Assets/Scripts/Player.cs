@@ -16,10 +16,12 @@ public class Player : MonoBehaviour
     public float gravity;
     public float fallMultiplier;
     private int numOfJumps = 0;
+    public bool isFalling;
     // Start is called before the first frame update
     void Start()
     {
         myRb = GetComponent<Rigidbody>();
+        isFalling = false;
     }
 
     // Update is called once per frame
@@ -52,6 +54,11 @@ public class Player : MonoBehaviour
         if (myRb.velocity.y < 0)
         {
             myRb.velocity += Vector3.up * Physics.gravity.y * fallMultiplier * Time.deltaTime; //incorporated fall multiplier to gravity
+            isFalling = true;
+        }
+        else
+        {
+            isFalling = false;
         }
     }
 

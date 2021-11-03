@@ -56,7 +56,15 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            if(collision.gameObject.GetComponent<Player>().isFalling)
+            {
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+            
         }
     }
 }
