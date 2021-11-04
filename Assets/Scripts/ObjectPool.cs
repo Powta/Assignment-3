@@ -26,10 +26,15 @@ public class ObjectPool : MonoBehaviour
         instance.SetActive(true);
         return instance;
     }
+    public void AddToPool(GameObject instance) //conditions are met to make object seemingly disappear, make the instance not active and add the object to the queue
+    {
+        instance.SetActive(false);
+        objectsAvailable.Enqueue(instance);
+    }
 
     private void GrowPool()//create the objects
     {
-        for(int i=0;i<10;i++)
+        for (int i = 0; i < 10; i++)
         {
             var instanceToAdd = Instantiate(prefab);
             instanceToAdd.transform.SetParent(transform);
@@ -37,9 +42,8 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
-    public void AddToPool(GameObject instance) //conditions are met to make object seemingly disappear, make the instance not active and add the object to the queue
-    {
-        instance.SetActive(false);
-        objectsAvailable.Enqueue(instance);
-    }
+ 
+
+
+
 }
