@@ -17,11 +17,13 @@ public class Player : MonoBehaviour
     public float fallMultiplier;
     private int numOfJumps = 0;
     public bool isFalling;
+    public bool isFacingRight;
     // Start is called before the first frame update
     void Start()
     {
         myRb = GetComponent<Rigidbody>();
         isFalling = false;
+        isFacingRight = true;
     }
 
     // Update is called once per frame
@@ -38,19 +40,21 @@ public class Player : MonoBehaviour
     private void PlayerInput()
     {
         dirX = Input.GetAxisRaw("Horizontal") * moveSpeed;
-        if (Input.GetButtonDown("Jump"))//jump
-        {
-            if(numOfJumps>0)
-            {
-                Jump();
-            }
-        }
     }
 
     //Player Horizontal Movement
     private void Movement()
     {
+       
+        if (Input.GetButtonDown("Jump"))//jump
+        {
+            if (numOfJumps > 0)
+            {
+                Jump();
+            }
+        }
         myRb.velocity = new Vector3(dirX, myRb.velocity.y, dirZ);
+        
         if (myRb.velocity.y < 0)
         {
             myRb.velocity += Vector3.up * Physics.gravity.y * fallMultiplier * Time.deltaTime; //incorporated fall multiplier to gravity
@@ -77,4 +81,6 @@ public class Player : MonoBehaviour
             numOfJumps = 1;
         }
     }
+
+
 }
