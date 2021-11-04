@@ -4,7 +4,7 @@ A platformer game prototype. The scope of the prototype consists of having a win
 Assignment used for this is Assignment 1
 
 # Youtube Link to Demo
-
+https://youtu.be/X8_R7qnt_SU
 # UML Diagram
 https://drive.google.com/file/d/188vOU0daLOgZXARjCddGFsTGj_14gysd/view?usp=sharing
 # Sources To Be Acknowledged
